@@ -35,10 +35,11 @@
 Clone the repository, and `cd` into it:  
 `git clone git@github.com:0bdx/gen-class.git && cd gen-class`
 
-Install the runtime dependency, and the two dev-dependencies:  
+Install the runtime dependency, and the three dev-dependencies:  
 `npm i`  
 @0bdx/ainta 0.0.18, 1 package, 114 kB for 7 items.  
 @0bdx/build-helpers 0.0.4, 1 package, 22 kB for 6 items.  
+@types/node 18.15.12, 1 package, 3.7 MB for 126 items.  
 rollup 3.15.0, 2 packages, 2.6 MB for 31 items.  
 
 Open the `gen-class` project in VS Code:  
@@ -65,7 +66,7 @@ Or run all the build and preflight steps in one line, eg before committing:
 `npm run build && npm run preflight`
 
 Check that the shell command will work as expected:  
-`node bin/gen-class.js examples/example-1/basic-class.json`
+`D="examples/example-1"; node bin/gen-class.js $D"/basic-class.json" --output $D`
 
 Display what will be published:  
 `npm publish --dry-run`
@@ -135,6 +136,7 @@ sed -ix 's/§0/gen-class./g' *e.json
 sed -ix 's/author": "/author": "0bdx <0@0bdx.com> (0bdx.com)/' *e.json
 rm package.jsonx
 npm install @0bdx/build-helpers --save-dev
+npm install @types/node --save-dev
 npm install rollup --save-dev
 npm install @0bdx/ainta
 ```
@@ -188,6 +190,7 @@ npm install @0bdx/ainta
     `rm package.jsonx`
 17. Install two dev-dependencies:  
     `npm install @0bdx/build-helpers --save-dev` 0.0.4, 1 package, 22 kB for 6 items  
+    `npm install @types/node --save-dev` 18.15.12, 1 package, 3.7 MB for 126 items  
     `npm install rollup --save-dev` 3.15.0, 2 packages, 2.6 MB for 31 items  
 18. Install one runtime dependency:  
     `npm install @0bdx/ainta` 0.0.18, 1 package, 114 kB for 7 items  

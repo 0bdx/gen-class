@@ -1,9 +1,5 @@
-/**
- * https://www.npmjs.com/package/@0bdx/gen-class
- * @version 0.0.1
- * @license Copyright (c) 2023 0bdx <0@0bdx.com> (0bdx.com)
- * SPDX-License-Identifier: MIT
- */
+import { genClass } from "./index.js";
+
 /** ### Wraps `genClass()` in a command line app.
  *
  * @param {string[]} argv
@@ -15,7 +11,7 @@
  * @throws
  *    Returns a short success message, which can be logged to `stderr`.
  */
-function runGenClassCli(argv, dependencies) {
+export default function runGenClassCli(argv, dependencies) {
     const begin = 'runGenClassCli():';
 
     // Deal with '--help' or '--version'.
@@ -35,8 +31,9 @@ function runGenClassCli(argv, dependencies) {
     // Load and parse the schema JSON file.
     const schemaRaw = dependencies.readFileSync(input);
     let schemaParsed;
-    try { schemaParsed = JSON.parse(schemaRaw); } catch(err) {
-        throw Error(`${begin} Malformed schema file '${input}'`)}
+    try { schemaParsed = JSON.parse(schemaRaw) } catch(err) {
+        throw Error(`${begin} Malformed schema file '${input}'`)};
+
     // Make the parsed schema into an array, if it's not already.
     const schemas = Array.isArray(schemaParsed) ? schemaParsed : [schemaParsed];
     const len = schemas.length;
@@ -92,20 +89,3 @@ function getHelp() {
 function getVersion() {
     return '@0bdx/gen-class 0.0.1';
 }
-
-/** ### Generates JavaScript code, based on a JSON schema.
- *
- * @param {object} schema
- *    A schema object which defines a single JavaScript class.
- * @returns {{filename:string,content:string}}
- *    Returns an instruction for generating a JavaScript file.
- */
-function genClass(schema) {
-
-    return {
-        filename: `${schema.name.toLowerCase()}.js`,
-        content: `export default class ${schema.name} {}`,
-    };
-}
-
-export { genClass, runGenClassCli };

@@ -1,12 +1,15 @@
-/** ### The main starter for the gen-class cli app.
+/** ### Generates JavaScript code, based on a JSON schema.
  *
- * @param {string[]} argv
- *    Raw command-line arguments, typically Node.js's `process.argv`.
- * @returns {string}
- *    Returns a short message, describing success or failure.
+ * @param {object} schema
+ *    A schema object which defines a single JavaScript class.
+ * @returns {{filename:string,content:string}}
+ *    Returns an instruction for generating a JavaScript file.
  */
-export default function genClass(argv) {
+export default function genClass(schema) {
     const begin = 'genClass():';
 
-    return `${begin} ok! ${argv.join()}`;
+    return {
+        filename: `${schema.name.toLowerCase()}.js`,
+        content: `export default class ${schema.name} {}`,
+    };
 }

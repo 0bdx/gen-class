@@ -1,5 +1,15 @@
 #!/usr/bin/env node
 
-import { genClass } from '../gen-class.js';
+import { readFileSync, writeFileSync } from 'fs';
+import { runGenClassCli } from '../gen-class.js';
 
-console.log(genClass(process.argv));
+try {
+    const result = runGenClassCli(
+        process.argv,
+        { readFileSync, writeFileSync },
+    );
+    console.log(result);
+} catch (err) {
+    console.error('Error:', err.message);
+    process.exit(1); // non-zero exit code indicates failure
+}

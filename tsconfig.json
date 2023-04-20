@@ -1,0 +1,40 @@
+/**
+ * This file tells VS Code's TypeScript server to highlight type errors in
+ * JavaScript files in the src/ directory. You read that right: all our code is
+ * plain JavaScript, not TypeScript, but the developer experience still benefits
+ * from live type checking.
+ *
+ * This file is not related to the "build:types" and "preflight:types" scripts
+ * in package.json:
+ * - "build:types" generates the gen-class.d.ts type declaration
+ * - "preflight:types" checks that gen-class.js uses all types correctly
+ */
+ {
+    "compilerOptions": {
+
+        // Enable error reporting in JavaScript files in the source directory.
+        // Same as adding `// @ts-check` at the top of every .js file.
+        "checkJs": true,
+  
+        // Generate .d.ts files from the source JavaScript files. The tsserver
+        // uses these .d.ts files internally - they're not written to the repo.
+        "declaration": true,
+  
+        // Only output d.ts files, don't try to transpile JS files to JS files.
+        "emitDeclarationOnly": true,
+
+        // Allow ES2020 features, like `BigInt`.
+        "lib": [ "dom", "es2020" ],
+
+        // Specify "moduleResolution" to allow Node-style imports from
+        // 'node_modules/'. This is only needed because "target" has been set,
+        "moduleResolution": "nodenext",
+
+        // Allow 'private identifiers'. This should probably be "es2022", but
+        // a `tsserver` bug means even "es2015" will work. @TODO revisit this
+        "target": "es2020"
+    },
+
+    // Match all JavaScript files in the 'bin/' and 'src/' directories.
+    "include": ["bin/gen-class.js","src/**/*.js"]
+}
