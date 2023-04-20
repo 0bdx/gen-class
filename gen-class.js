@@ -1,6 +1,6 @@
 /**
  * https://www.npmjs.com/package/@0bdx/gen-class
- * @version 0.0.1
+ * @version 0.0.2
  * @license Copyright (c) 2023 0bdx <0@0bdx.com> (0bdx.com)
  * SPDX-License-Identifier: MIT
  */
@@ -90,7 +90,7 @@ function getHelp() {
 }
 
 function getVersion() {
-    return '@0bdx/gen-class 0.0.1';
+    return '@0bdx/gen-class 0.0.2';
 }
 
 /** ### Generates JavaScript code, based on a JSON schema.

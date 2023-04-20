@@ -1,6 +1,6 @@
 {
   "name": "@0bdx/gen-class",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Generates files containing JavaScript classes and unit tests, based on a JSON schema.",
   "type": "module",
   "files": [

@@ -87,5 +87,5 @@ function getHelp() {
 }
 
 function getVersion() {
-    return '@0bdx/gen-class 0.0.1';
+    return '@0bdx/gen-class 0.0.2';
 }
