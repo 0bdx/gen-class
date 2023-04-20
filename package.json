@@ -1,7 +1,7 @@
 {
   "name": "@0bdx/gen-class",
   "version": "0.0.1",
-  "description": "Generate files containing JavaScript classes and unit tests, based on a JSON schema",
+  "description": "Generates files containing JavaScript classes and unit tests, based on a JSON schema.",
   "type": "module",
   "files": [
     "gen-class.d.ts",
@@ -15,7 +15,7 @@
     "gen-class": "bin/gen-class.js"
   },
   "preferGlobal": true,
-  "main": "index.js",
+  "main": "gen-class.js",
   "scripts": {
     "build:prod": "rollup -c",
     "build:types": "tsc gen-class.js --allowJs --declaration --emitDeclarationOnly",
@@ -36,6 +36,7 @@
   ],
   "author": "0bdx <0@0bdx.com> (0bdx.com)",
   "license": "MIT",
+  "types": "./gen-class.d.ts",
   "bugs": {
     "url": "https://github.com/0bdx/gen-class/issues"
   },
